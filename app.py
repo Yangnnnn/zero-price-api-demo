@@ -23,8 +23,8 @@ def create_product():
   price = data["price"]
 
   # Validation logic (contains an intentional bug regarding zero prices)
-  if price <= 0:
-    return jsonify({"error": "Price must be greater than zero"}), 400
+  if price < 0:
+    return jsonify({"error": "Price must be greater or equal to zero"}), 400
 
   product = {"id": next_id, "name": name, "price": price}
   products.append(product)
